@@ -1,0 +1,39 @@
+import 'package:flame/components.dart';
+import 'package:reflex/domain/components/grid_component.dart';
+import 'package:reflex/domain/components/tiles/tile_component.dart';
+import 'package:reflex/domain/components/tiles/tile_directional_component.dart';
+import 'package:reflex/domain/entities/tiles/tile.dart';
+import 'package:reflex/domain/json/json_tile.dart';
+import 'package:reflex/domain/types/direction.dart';
+
+class TileDirectional extends Tile {
+  final Direction direction;
+
+  TileDirectional({
+    required super.location,
+    required super.event,
+    required this.direction,
+  });
+
+  @override
+  TileComponent component({
+    required Vector2 position,
+    required Vector2 size,
+    required GridComponent gridComponent,
+  }) => TileDirectionalComponent(
+    position: position,
+    size: size,
+    tile: this,
+    gridComponent: gridComponent,
+  );
+
+  @override
+  JsonTile get json => JsonTile(
+    location: location.json,
+    direction: direction,
+    quantity: null,
+    number: null,
+    category: null,
+    value: null,
+  );
+}

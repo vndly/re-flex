@@ -1,0 +1,36 @@
+import 'package:flutter/material.dart';
+import 'package:reflex/domain/components/tiles/tile_component.dart';
+import 'package:reflex/domain/entities/tiles/tile_bomb.dart';
+import 'package:reflex/extensions/canvas_extension.dart';
+import 'package:reflex/utils/palette.dart';
+
+class TileBombComponent extends TileComponent<TileBomb> {
+  late final NeonPaint neonPaint;
+
+  TileBombComponent({
+    required super.position,
+    required super.size,
+    required super.tile,
+    required super.gridComponent,
+  }) : super(borderColor: Palette.TILE_RED) {
+    neonPaint = NeonPaint.create(
+      color: Palette.TILE_RED,
+      style: PaintingStyle.fill,
+    );
+  }
+
+  @override
+  bool get showExplosion => true;
+
+  @override
+  void render(Canvas canvas) {
+    super.render(canvas);
+
+    canvas.drawTextNeon(
+      text: '💣',
+      position: size / 2,
+      size: size.x / 2.5,
+      paint: neonPaint,
+    );
+  }
+}

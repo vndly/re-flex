@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "re-flex",
+    "local": "re-flex",
+    "remote": "re-flex"
+  }
+}

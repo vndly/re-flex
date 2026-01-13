@@ -1,0 +1,53 @@
+import 'package:dafluta/dafluta.dart';
+import 'package:flame/game.dart';
+import 'package:flutter/material.dart';
+import 'package:reflex/domain/components/game_component.dart';
+import 'package:reflex/domain/entities/match.dart';
+import 'package:reflex/domain/state/match/match_state.dart';
+import 'package:reflex/presentation/common/containers/game_container.dart';
+import 'package:reflex/utils/assets.dart';
+
+class MatchScreen extends StatelessWidget {
+  final MatchState state;
+
+  const MatchScreen._(this.state);
+
+  factory MatchScreen.instance(Match match) => MatchScreen._(MatchState(match));
+
+  @override
+  Widget build(BuildContext context) {
+    return Unclosable(
+      child: GameContainer(
+        child: Content(state),
+      ),
+    );
+  }
+}
+
+class Content extends StatelessWidget {
+  final MatchState state;
+
+  const Content(this.state);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/${Assets.IMAGES_BACKGROUND}'),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        GameWidget(
+          game: GameComponent(
+            match: state.match,
+            state: state,
+          ),
+        ),
+      ],
+    );
+  }
+}

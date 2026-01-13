@@ -1,0 +1,58 @@
+import 'package:flutter/material.dart';
+import 'package:reflex/domain/components/tiles/tile_component.dart';
+import 'package:reflex/domain/entities/tiles/tile_align.dart';
+import 'package:reflex/domain/types/direction.dart';
+import 'package:reflex/extensions/canvas_extension.dart';
+import 'package:reflex/utils/palette.dart';
+
+class TileAlignComponent extends TileComponent<TileAlign> {
+  late final NeonPaint neonPaint;
+
+  TileAlignComponent({
+    required super.position,
+    required super.size,
+    required super.tile,
+    required super.gridComponent,
+  }) : super(borderColor: Palette.TILE_WHITE) {
+    neonPaint = NeonPaint.create(
+      color: Palette.TILE_WHITE,
+      style: PaintingStyle.fill,
+    );
+  }
+
+  @override
+  void render(Canvas canvas) {
+    super.render(canvas);
+
+    switch (tile.direction) {
+      case Direction.up:
+        canvas.drawTextNeon(
+          text: '⬆️',
+          position: size / 2,
+          size: size.x / 2.5,
+          paint: neonPaint,
+        );
+      case Direction.down:
+        canvas.drawTextNeon(
+          text: '⬇️',
+          position: size / 2,
+          size: size.x / 2.5,
+          paint: neonPaint,
+        );
+      case Direction.left:
+        canvas.drawTextNeon(
+          text: '⬅️',
+          position: size / 2,
+          size: size.x / 2.5,
+          paint: neonPaint,
+        );
+      case Direction.right:
+        canvas.drawTextNeon(
+          text: '➡️',
+          position: size / 2,
+          size: size.x / 2.5,
+          paint: neonPaint,
+        );
+    }
+  }
+}
