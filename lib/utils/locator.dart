@@ -18,13 +18,13 @@ class Locator {
     if (Platform.isWeb) {
       await Firebase.initializeApp(
         options: const FirebaseOptions(
-          apiKey: 'AIzaSyCv1u8NNWyF0HbyeYqRKGY9QJjnrHeSweM',
+          apiKey: 'AIzaSyDG0fBH8xlnmF2nCP_9vWfGE610DWNazNw',
           authDomain: 're-flex.firebaseapp.com',
           projectId: 're-flex',
           storageBucket: 're-flex.firebasestorage.app',
-          messagingSenderId: '917756221178',
-          appId: '1:917756221178:web:f4b710ddf314d640e05b43',
-          measurementId: 'G-YLBGZJL3TV',
+          messagingSenderId: '334010089268',
+          appId: '1:334010089268:web:ffd0a8875009d24dbaaf61',
+          measurementId: 'G-PV5MSCQ1R5',
         ),
       );
     } else {
